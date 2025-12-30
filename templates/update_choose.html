@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Donor</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      background: url("{{ url_for('static', filename='images/pic9.jpg') }}") no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 30px 20px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      width: 350px;
+    }
+
+    h2 {
+      color: #b30000;
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 8px;
+      margin-bottom: 10px;
+      width: 80%;
+    }
+
+    button {
+      display: block;
+      width: 60%;
+      padding: 10px;
+      margin: 10px auto;
+      background: #b30000;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #800000;
+    }
+
+    .back-btn {
+      background: gray;
+    }
+
+    .back-btn:hover {
+      background: darkgray;
+    }
+
+    .flash-message {
+      color: red;
+      margin: 10px 0;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Update Donor Details</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash-message">{{ messages[0] }}</div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+      <input type="number" name="id" placeholder="Enter Donor ID">
+      <button type="submit" name="update_by" value="id">Update by ID</button>
+    </form>
+
+    <form method="POST">
+      <input type="text" name="name" placeholder="Enter Donor Name">
+      <button type="submit" name="update_by" value="name">Update by Name</button>
+    </form>
+
+    <button class="back-btn" onclick="location.href='{{ url_for('main_menu') }}'">Back to Menu</button>
+  </div>
+</body>
+</html>

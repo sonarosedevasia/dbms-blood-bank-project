@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Main Menu</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('/static/images/main_bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .menu-container {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 40px 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      color: #b30000;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    button {
+      display: block;
+      width: 250px;
+      margin: 15px auto;
+      padding: 15px;
+      font-size: 1.2rem;
+      background: #b30000;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #800000;
+    }
+  </style>
+</head>
+<body>
+  <div class="menu-container">
+    <h1>Main Menu</h1>
+    <button onclick="location.href='/add'">Add New Donor</button>
+    <button onclick="location.href='/view'">View Donor List</button>
+    <button onclick="location.href='/update_choose'">Update Donor Details</button>
+    <button onclick="location.href='/delete'">Delete Donor</button>
+    <button onclick="location.href='/'">🏠 Home</button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blood Bank Management System</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      background-image: url('/static/images/index_bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      text-align: center;
+    }
+
+    .content {
+      position: relative;
+      top: 10%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #8B0000;
+      margin-bottom: 10px;
+    }
+
+    .slogan {
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #5C4033;
+      margin-bottom: 40px;
+    }
+
+    .message {
+      position: absolute;
+      bottom: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+    }
+
+    .message p {
+      font-size: 1.4rem;
+      line-height: 1.6;
+      font-weight: bold;
+      color: white;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+    }
+
+    .register-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+      background-color: #b30000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-transform: uppercase;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+      transition: 0.3s ease;
+    }
+
+    .register-btn:hover {
+      background-color: #800000;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <h1>BLOOD BANK MANAGEMENT SYSTEM</h1>
+    <div class="slogan">DONATE BLOOD. SAVE LIVES.</div>
+  </div>
+  
+  <div class="message">
+    <p>
+      Welcome to our Blood Bank Management System, where we connect donors with those in need.<br>
+      Your contribution can make a difference.
+    </p>
+    <button class="register-btn" onclick="location.href='/main_menu'">Register</button>
+  </div>
+</body>
+</html>

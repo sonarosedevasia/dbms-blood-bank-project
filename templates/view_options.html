@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Donor Menu</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url("{{ url_for('static', filename='images/pic9.jpg') }}") no-repeat center center fixed;
+      background-size: cover;
+
+    }
+
+    .menu-container {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 30px 20px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+      color: #b30000;
+      margin-bottom: 20px;
+    }
+
+    button {
+      display: block;
+      width: 200px;
+      margin: 10px auto;
+      padding: 12px;
+      font-size: 1rem;
+      background: #b30000;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #800000;
+    }
+  </style>
+</head>
+<body>
+  <div class="menu-container">
+    <h2>View Donor Menu</h2>
+    <button onclick="location.href='{{ url_for('view_all') }}'">View All Donors</button>
+    <button onclick="location.href='{{ url_for('view_search_name') }}'">Search by Name</button>
+    <button onclick="location.href='{{ url_for('view_search_blood') }}'">Search by Blood Group</button>
+    <button onclick="location.href='{{ url_for('view_search_id') }}'">Search by ID</button>
+    <button onclick="location.href='{{ url_for('main_menu') }}'">Back to Menu</button>
+  </div>
+</body>
+</html>

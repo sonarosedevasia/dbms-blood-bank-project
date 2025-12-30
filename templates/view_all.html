@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Donors</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: url("{{ url_for('static', filename='images/pic9.jpg') }}") no-repeat center center fixed;
+      background-size: cover;
+      color: #000;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background: #b30000;
+      color: white;
+    }
+
+    .back-btn {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #b30000;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .back-btn:hover {
+      background: #800000;
+    }
+  </style>
+</head>
+<body>
+  <h2>All Donors</h2>
+
+  {% if donors %}
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Blood Group</th>
+      </tr>
+      {% for d in donors %}
+        <tr>
+          <td>{{ d[0] }}</td>
+          <td>{{ d[1] }}</td>
+          <td>{{ d[2] }}</td>
+          <td>{{ d[3] }}</td>
+          <td>{{ d[4] }}</td>
+          <td>{{ d[5] }}</td>
+          <td>{{ d[6] }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>No donors found.</p>
+  {% endif %}
+
+  <button class="back-btn" onclick="location.href='{{ url_for('view_donor_menu') }}'">Back</button>
+</body>
+</html>

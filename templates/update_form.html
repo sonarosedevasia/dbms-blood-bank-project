@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Donor Form</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url("{{ url_for('static', filename='images/pic9.jpg') }}") no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .form-container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 15px;
+      width: 350px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+      text-align: center;
+      color: #b30000;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #b30000;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #800000;
+    }
+
+    .back-button {
+      background: gray;
+      margin-top: 5px;
+    }
+
+    .back-button:hover {
+      background: darkgray;
+    }
+
+    .flash-message {
+      color: green;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Update Donor Details</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash-message">{{ messages[0] }}</div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" value="{{ donor[1] }}" required>
+
+      <label for="age">Age:</label>
+      <input type="number" name="age" id="age" value="{{ donor[2] }}" required>
+
+      <label for="gender">Gender:</label>
+      <select name="gender" id="gender" required>
+        <option value="Male" {% if donor[3] == 'Male' %}selected{% endif %}>Male</option>
+        <option value="Female" {% if donor[3] == 'Female' %}selected{% endif %}>Female</option>
+        <option value="Other" {% if donor[3] == 'Other' %}selected{% endif %}>Other</option>
+      </select>
+
+      <label for="phone">Phone:</label>
+      <input type="text" name="phone" id="phone" value="{{ donor[4] }}">
+
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" value="{{ donor[5] }}">
+
+      <label for="blood_group">Blood Group:</label>
+      <select name="blood_group" id="blood_group" required>
+        <option value="A+" {% if donor[6] == 'A+' %}selected{% endif %}>A+</option>
+        <option value="A-" {% if donor[6] == 'A-' %}selected{% endif %}>A-</option>
+        <option value="B+" {% if donor[6] == 'B+' %}selected{% endif %}>B+</option>
+        <option value="B-" {% if donor[6] == 'B-' %}selected{% endif %}>B-</option>
+        <option value="O+" {% if donor[6] == 'O+' %}selected{% endif %}>O+</option>
+        <option value="O-" {% if donor[6] == 'O-' %}selected{% endif %}>O-</option>
+        <option value="AB+" {% if donor[6] == 'AB+' %}selected{% endif %}>AB+</option>
+        <option value="AB-" {% if donor[6] == 'AB-' %}selected{% endif %}>AB-</option>
+      </select>
+
+      <button type="submit">Update</button>
+      <button type="button" class="back-button" onclick="location.href='{{ url_for('main_menu') }}'">Back to Menu</button>
+    </form>
+  </div>
+</body>
+</html>

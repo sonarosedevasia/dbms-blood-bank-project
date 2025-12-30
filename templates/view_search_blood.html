@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Donor by Blood Group</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: url("{{ url_for('static', filename='images/pic9.jpg') }}") no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+      color: #000;
+    }
+
+    h2 {
+      text-align: center;
+      color: #b30000;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px 30px;
+      border-radius: 15px;
+      text-align: center;
+      width: 90%;
+      max-width: 700px;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    select {
+      padding: 8px;
+      margin-right: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 8px 15px;
+      background: #b30000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #800000;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background: #b30000;
+      color: white;
+    }
+
+    .back-btn {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #b30000;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .back-btn:hover {
+      background: #800000;
+    }
+
+    p {
+      font-weight: bold;
+      color: #b30000;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Search Donor by Blood Group</h2>
+
+    <form method="POST">
+      <select name="blood_group" required>
+        <option value="">Select Blood Group</option>
+        <option value="A+">A+</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B-">B-</option>
+        <option value="O+">O+</option>
+        <option value="O-">O-</option>
+        <option value="AB+">AB+</option>
+        <option value="AB-">AB-</option>
+      </select>
+      <button type="submit">Search</button>
+    </form>
+
+    {% if donors %}
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Blood Group</th>
+        </tr>
+        {% for d in donors %}
+          <tr>
+            <td>{{ d[0] }}</td>
+            <td>{{ d[1] }}</td>
+            <td>{{ d[2] }}</td>
+            <td>{{ d[3] }}</td>
+            <td>{{ d[4] }}</td>
+            <td>{{ d[5] }}</td>
+            <td>{{ d[6] }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% elif donors is not none %}
+      <p>No donor found.</p>
+    {% endif %}
+
+    <button class="back-btn" onclick="location.href='{{ url_for('view_donor_menu') }}'">Back</button>
+  </div>
+</body>
+</html>
